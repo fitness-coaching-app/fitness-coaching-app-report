@@ -1,0 +1,42 @@
+\documentclass{cekmitlprojectreport}
+\input{./config/constants.tex}
+
+
+\begin{document}
+
+\MakeCoverPage
+
+\MakeThesisCert
+
+\pagestyle{preamble}
+\setcounter{page}{1}
+
+\MakeAbstractTH{
+    \input{./chapters/abstract_th.tex}
+}
+\MakeAbstractEN{
+    \input{./chapters/abstract_en.tex}
+}
+\MakeAcknowledgement{
+    \input{./chapters/acknowledgement.tex}
+}
+
+\pagestyle{toc}
+
+\tableofcontents
+\listoftables
+\listoffigures
+\justifying
+\renewcommand{\arraystretch}{1.5}
+\pagestyle{maincontent}
+\input{./chapters/chapter_1.tex}
+\input{./chapters/chapter_2.tex}
+\input{./chapters/chapter_3.tex}
+\input{./chapters/chapter_4.tex}
+
+\clearpage
+\nocite{*}
+\thispagestyle{plain}
+\bibliography{bibliography}
+
+\end{document}
