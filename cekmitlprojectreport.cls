@@ -33,6 +33,7 @@
 \RequirePackage{etoolbox}
 \usepackage[normalem]{ulem}
 \RequirePackage[strict]{changepage}
+\RequirePackage{listings}
 
 
 % ## Centering all floating objects (inc. figures) ##
@@ -64,6 +65,11 @@
 	BoldItalicFont = AngsanaNewBoldItalic.ttf,
 	Script=Thai
 ]
+
+\newfontfamily{\monofont}[
+	Path = fonts/inconsolata/,
+	BoldFont = Inconsolata-Bold.ttf
+]{Inconsolata-Regular.ttf}
 
 \setlength{\parindent}{35pt}
 \newlength\parindentvalue
@@ -336,9 +342,11 @@
 \captionsetup[table]{format=hang,labelfont={bf}, textfont={bf},name={ตารางที่}, labelsep=space, singlelinecheck=off}
 \renewcommand{\arraystretch}{1}
 
-
 % figures
 \captionsetup[figure]{format=hang,font={bf},name={รูปที่},justification=centering, labelsep=space, singlelinecheck=off}
+
+% codeblock
+\captionsetup[lstlisting]{format=hang,labelfont={bf}, textfont={bf}, labelsep=space, singlelinecheck=off}
 
 % table & figure position
 \makeatletter% because def contain @ 
@@ -348,9 +356,27 @@
 
 
 % ## List Style & Numbering
+\makeatletter
+\newcommand*{\compress}{\@minipagetrue}
+\makeatother
+
+
 \setlist[enumerate]{label = \arabic*),align=left, labelindent=\parindentvalue, leftmargin=*, widest=00),nosep}
 
+\newlist{tabnum}{enumerate}{1}
+\setlist[tabnum]{label = \arabic*),align=left, labelindent=\parindentvalue, widest=00),nosep, after=\vspace{-\baselineskip}, before=\compress}
 
+% ## Code Block Style ##
+\renewcommand{\lstlistingname}{โปรแกรมที่}
+\lstset{
+	basicstyle=\monofont \raggedright \fontsize{12pt}{1em}\selectfont,
+	frame=single,
+	aboveskip=20pt,
+	belowskip=20pt,
+	abovecaptionskip=0pt,
+	breaklines=true,
+	resetmargins=true,
+}
 
 % ## Bibliography Styles ##
 \addto{\captionsthai}{\renewcommand{\bibname}{บรรณานุกรม}}
