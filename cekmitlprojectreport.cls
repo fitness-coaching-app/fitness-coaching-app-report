@@ -12,7 +12,6 @@
 \RequirePackage{lmodern}
 \RequirePackage{ragged2e}
 \RequirePackage{babel}
-\babelprovide[main, import]{thai}
 \RequirePackage{titlesec}
 \RequirePackage{indentfirst}
 \RequirePackage{enumitem}
@@ -22,7 +21,6 @@
 \RequirePackage{float}
 \RequirePackage{calc}
 \RequirePackage{graphicx}
-\graphicspath{ {./images/} }
 \RequirePackage{fancyhdr}
 \RequirePackage{titletoc}
 \RequirePackage{ifthen}
@@ -31,11 +29,14 @@
 \RequirePackage{amsmath}
 \RequirePackage{natbib}
 \RequirePackage{etoolbox}
-\usepackage[normalem]{ulem}
 \RequirePackage[strict]{changepage}
 \RequirePackage{listings}
+\RequirePackage[hidelinks]{hyperref}
 
+\usepackage[normalem]{ulem}
 
+\babelprovide[main, import]{thai}
+\graphicspath{ {./images/} }
 % ## Centering all floating objects (inc. figures) ##
 \makeatletter
 \g@addto@macro\@floatboxreset\centering
@@ -391,7 +392,7 @@
 }
 
 \renewcommand{\bibsep}{15pt}
-\bibliographystyle{apa}
+\bibliographystyle{plainnat}
 
 % ## Command to start appendix ##
 \def\thaialph#1{\expandafter\thalph\csname c@#1\endcsname}
@@ -408,12 +409,12 @@
 
 	\titlecontents{chapter}[0mm]
 	{\stepcounter{tocitem}\tocheadcont{\thelinenumber}{\thetocitem}{สารบัญ}}
-	{\bfseries ภาคผนวก \thecontentslabel \space}
-	{\bfseries}{\DotFill\contentspage}
+	{ภาคผนวก \thecontentslabel \space}
+	{}{\DotFill\contentspage}
 
 	\titleformat{\chapter}[display]
-	{\bfseries\centering\fontsize{18pt}{1em}\selectfont}
-	{ภาคผนวก \thechapter}{0pt}{\vspace{10pt}\fontsize{18pt}{1em}\selectfont}
+	{\bfseries\centering\fontsize{20pt}{1em}\selectfont}
+	{ภาคผนวก \thechapter}{0pt}{\vspace{10pt}\fontsize{24pt}{1em}\selectfont}
 	\titlespacing*{\chapter}{0pt}{0pt}{20pt}
 }
 
@@ -426,7 +427,7 @@
 		\fontsize{22pt}{1.3em}\selectfont
 		\vspace{30pt}\\
         \ThesisTitleTH\\
-		\MakeUppercase{\ThesisTitleTwoLinesEN}\\
+		\MakeUppercase{\ThesisTitleEN}\\
 		\fontsize{18pt}{1em}\selectfont
 		\vspace{162pt}
 		\AuthorAFirstNameTH \space\space \AuthorALastNameTH\\
@@ -437,7 +438,7 @@
 		สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง\\
 		ปีการศึกษา \AcademicYear
     }
-    \end{center} 
+    \end{center}
 	\clearpage
 	\restoregeometry
 }
@@ -461,7 +462,7 @@
 	\begin{tabular}{ @{} p{6cm} l @{} }
 		\DotFill & อาจารย์ที่ปรึกษา\\
 		\centering (\AdvisorTitleTH\space\AdvisorFirstNameTH \space\space \AdvisorLastNameTH) & \null
-	\end{tabular}	
+	\end{tabular}
 	\end{flushright}
 	\clearpage
 \end{flushleft}
@@ -473,7 +474,7 @@
 	\noindent
 	\begin{center}
 		\fontsize{24pt}{1em}\selectfont
-		\textbf{\ThesisTitleTwoLinesTH}
+		\textbf{\ThesisTitleTH}
 	\end{center}
 	\begin{flushright}
 		\begin{tabular}{ @{}lll@{} }
@@ -496,7 +497,7 @@
 	\noindent
 	\begin{center}
 		\fontsize{24pt}{1em}\selectfont
-		\textbf{\MakeUppercase{\ThesisTitleTwoLinesEN}}
+		\textbf{\MakeUppercase{\ThesisTitleEN}}
 	\end{center}
 	\begin{flushright}
 		\begin{tabular}{ @{}lll@{} }
