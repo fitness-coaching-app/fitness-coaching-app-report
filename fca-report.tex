@@ -1,7 +1,37 @@
+% ================== CE KMITL Project Report ==================
 \documentclass{cekmitlprojectreport}
-\input{./config/constants.tex}
+
+% Constants =========================
+\newcommand{\ThesisTitleTH}{\mbox{แอปพลิเคชันสอนออกกำลังกาย}\mbox{ที่สามารถช่วยจัดท่าทางได้อย่างถูกวิธี}}
+\newcommand{\ThesisTitleEN}{\mbox{Fitness Coaching Application} \mbox{With Pose Correction}}
+
+\newcommand{\AuthorATitleTH}{นาย}
+\newcommand{\AuthorAFirstNameTH}{กิตติณัฏฐ์}
+\newcommand{\AuthorALastNameTH}{เอี่ยมธนากุล}
+\newcommand{\AuthorATitleEN}{Mr.}
+\newcommand{\AuthorAFirstNameEN}{Kittinat}
+\newcommand{\AuthorALastNameEN}{Aeamthanakul}
+\newcommand{\AuthorAStudentID}{61010082}
+
+\newcommand{\AuthorBTitleTH}{นาย}
+\newcommand{\AuthorBFirstNameTH}{ปรมี}
+\newcommand{\AuthorBLastNameTH}{จันทร์สุขเศรษฐ์}
+\newcommand{\AuthorBTitleEN}{Mr.}
+\newcommand{\AuthorBFirstNameEN}{Poramee}
+\newcommand{\AuthorBLastNameEN}{Chansuksett}
+\newcommand{\AuthorBStudentID}{61010627}
+
+\newcommand{\AdvisorTitleTH}{รศ.ดร.\space}
+\newcommand{\AdvisorFirstNameTH}{อรฉัตร}
+\newcommand{\AdvisorLastNameTH}{จิตต์โสภักตร์}
+\newcommand{\AdvisorTitleEN}{Assoc. Prof. Dr.}
+\newcommand{\AdvisorFirstNameEN}{Orachat}
+\newcommand{\AdvisorLastNameEN}{Chitsobhuk}
+
+\newcommand{\AcademicYear}{2564}
 
 
+% Documents =========================
 \begin{document}
 
 \MakeCoverPage
@@ -36,8 +66,10 @@
 \input{./chapters/chapter_5.tex}
 
 \clearpage
-\nocite{*}
+
 \thispagestyle{plain}
+\nocite{*}
 \bibliography{bibliography}
+\input{./chapters/appendix.tex}
 
 \end{document}
