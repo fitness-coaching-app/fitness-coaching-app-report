@@ -80,7 +80,7 @@
 \pagestyle{empty}
 \setlength{\headheight}{20pt}
 \fancypagestyle{preamble}{
-	\renewcommand{\thepage}{\MakeUppercase{\roman{page}}}
+	\renewcommand{\thepage}{\texorpdfstring{\MakeUppercase{\roman{page}}}{\roman{page}}}
     \fancyhf{}
     \fancyfoot[C]{\thepage}
 	\renewcommand{\headrulewidth}{0pt}
