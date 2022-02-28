@@ -27,10 +27,9 @@ jobs:
           compiler: xelatex
           args: -file-line-error -interaction=nonstopmode
       - name: Compile BibTex
-        uses: xu-cheng/latex-action@v2
+        uses: xu-cheng/texlive-action/full@v1
         with:
-          root_file: fca-report
-          compiler: bibtex
+          run: bibtex fca-report
       - name: Compile LaTeX document - Pass 2
         uses: xu-cheng/latex-action@v2
         with:
