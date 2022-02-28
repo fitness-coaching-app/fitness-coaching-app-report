@@ -24,8 +24,8 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: fca-report.tex
-          latexmk_use_xelatex: true
           compiler: xelatex
+          args: -file-line-error -interaction=nonstopmode
       - name: Upload PDF to artifact
         uses: actions/upload-artifact@v2
         with:
