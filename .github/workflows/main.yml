@@ -26,6 +26,11 @@ jobs:
           root_file: fca-report.tex
           compiler: xelatex
           args: -file-line-error -interaction=nonstopmode
+      - name: Compile BibTex
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: fca-report
+          compiler: bibtex
       - name: Compile LaTeX document - Pass 2
         uses: xu-cheng/latex-action@v2
         with:
