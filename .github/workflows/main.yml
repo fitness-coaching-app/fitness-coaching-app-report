@@ -41,5 +41,5 @@ jobs:
         uses: actions/upload-artifact@v2
         if: always()
         with:
-          name: PDF
+          name: fca-report PDF File
           path: fca-report.pdf
