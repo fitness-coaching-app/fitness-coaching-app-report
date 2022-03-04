@@ -177,7 +177,7 @@
 \makeatother
 
 \newcommand{\lotheadcont}[3]{
-    \ifthenelse{#1>31 \OR #2>31}{
+    \ifthenelse{#1>27 \OR #2>27}{
         \pagebreak[4]
         \resetlinenumber[1]
         \setcounter{lotitem}{0}
@@ -215,7 +215,7 @@
 \makeatother
 
 \newcommand{\lofheadcont}[3]{
-    \ifthenelse{#1>31 \OR #2>31}{
+    \ifthenelse{#1>27 \OR #2>27}{
         \pagebreak[4]
         \resetlinenumber[1]
         \setcounter{lofitem}{0}
