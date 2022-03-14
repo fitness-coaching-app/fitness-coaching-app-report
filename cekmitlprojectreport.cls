@@ -341,7 +341,7 @@
 
 % table & table caption
 \captionsetup[table]{format=hang,labelfont={bf}, textfont={bf},name={ตารางที่}, labelsep=space, singlelinecheck=off}
-\renewcommand{\arraystretch}{1}
+\renewcommand{\arraystretch}{1.5}
 
 % figures
 \captionsetup[figure]{format=hang,font={bf},name={รูปที่},justification=centering, labelsep=space, singlelinecheck=off}
@@ -358,14 +358,16 @@
 
 % ## List Style & Numbering
 \makeatletter
-\newcommand*{\compress}{\@minipagetrue}
+	\newcommand*{\compress}{\@minipagetrue}
 \makeatother
 
-
 \setlist[enumerate]{label = \arabic*),align=left, labelindent=\parindentvalue, leftmargin=*, widest=00),nosep}
-
-\newlist{tabnum}{enumerate}{1}
-\setlist[tabnum]{label = \arabic*),align=left, labelindent=\parindentvalue, widest=00),nosep, after=\vspace{-\baselineskip}, before=\compress}
+\SetEnumitemKey{table}{
+	leftmargin=*,
+	labelindent=0pt,
+	before=\vspace{-\baselineskip + \arraystretch\tabcolsep},
+	after=\vspace{-\baselineskip + \arraystretch\tabcolsep},
+}
 
 % ## Code Block Style ##
 \renewcommand{\lstlistingname}{โปรแกรมที่}
@@ -446,7 +448,7 @@
 
 \newcommand{\MakeThesisCert}{
 \begin{flushleft}
-	ปริญญานิพนธ์ปีการศึกษา \AcademicYear\\
+	ปริญญานิพนธ์ปีการศึกษา \AcademicYearTH\\
 	สาขาวิชาวิศวกรรมคอมพิวเตอร์\\
 	คณะวิศวกรรมศาสตร์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง\\
 	เรื่อง\hspace{1cm}\ThesisTitleTH\\
@@ -481,7 +483,7 @@
 				\AuthorATitleTH\AuthorAFirstNameTH & \AuthorALastNameTH & \AuthorAStudentID\\
 				\AuthorBTitleTH\AuthorBFirstNameTH & \AuthorBLastNameTH & \AuthorBStudentID\\
 				\AdvisorTitleTH\AdvisorFirstNameTH & \AdvisorLastNameTH & อาจารย์ที่ปรึกษา\\
-				ปีการศึกษา \AcademicYear & \null & \null
+				ปีการศึกษา \AcademicYearTH & \null & \null
 		\end{tabular}
 	\end{flushright}
 	\vspace{20pt}
@@ -504,7 +506,7 @@
 				\AuthorATitleEN\AuthorAFirstNameEN & \AuthorALastNameEN & \AuthorAStudentID\\
 				\AuthorBTitleEN\AuthorBFirstNameEN & \AuthorBLastNameEN & \AuthorBStudentID\\
 				\AdvisorTitleEN\AdvisorFirstNameEN & \AdvisorLastNameEN & Advisor\\
-				Academic Year \AcademicYear & \null & \null
+				Academic Year {\AcademicYearEN} & \null & \null
 		\end{tabular}
 	\end{flushright}
 	\vspace{20pt}
