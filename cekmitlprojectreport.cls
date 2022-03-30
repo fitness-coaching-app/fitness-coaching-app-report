@@ -38,6 +38,38 @@
 
 \babelprovide[main, import]{thai}
 \graphicspath{ {./images/} }
+
+% ## Constants Setup ##
+\newcounter{authorcount}
+\setcounter{authorcount}{0}
+\newcounter{advisorcount}
+\setcounter{advisorcount}{0}
+
+\readarraysepchar{\\}
+\newcommand{\authorlistraw}{}
+\newcommand{\advisorlistraw}{}
+
+% #1 = TitleTH
+% #2 = FirstNameTH
+% #3 = LastNameTH
+% #4 = TitleEN
+% #5 = FirstNameEN
+% #6 = LastNameEN
+% #7 = StudentID
+
+\newcommand{\authordetail}[7]{
+	\stepcounter{authorcount}
+	\appto\authorlistraw{#1\\#2\\#3\\#4\\#5\\#6\\#7\\}
+	\readarray\authorlistraw\AuthorList[-,7]
+}
+
+\newcommand{\advisordetail}[6]{
+	\stepcounter{advisorcount}
+	\appto\advisorlistraw{#1\\#2\\#3\\#4\\#5\\#6\\}
+	\readarray\advisorlistraw\AdvisorList[-,6]
+}
+
+
 % ## Centering all floating objects (inc. figures) ##
 \makeatletter
 \g@addto@macro\@floatboxreset\centering
@@ -419,36 +451,6 @@
 	{\bfseries\centering\fontsize{20pt}{1em}\selectfont}
 	{ภาคผนวก \thechapter}{0pt}{\vspace{10pt}\fontsize{24pt}{1em}\selectfont}
 	\titlespacing*{\chapter}{0pt}{0pt}{20pt}
-}
-
-% ## Constants Setup ##
-\newcounter{authorcount}
-\setcounter{authorcount}{0}
-\newcounter{advisorcount}
-\setcounter{advisorcount}{0}
-
-\readarraysepchar{\\}
-\newcommand{\authorlistraw}{}
-\newcommand{\advisorlistraw}{}
-
-% #1 = TitleTH
-% #2 = FirstNameTH
-% #3 = LastNameTH
-% #4 = TitleEN
-% #5 = FirstNameEN
-% #6 = LastNameEN
-% #7 = StudentID
-
-\newcommand{\authordetail}[7]{
-	\stepcounter{authorcount}
-	\appto\authorlistraw{#1\\#2\\#3\\#4\\#5\\#6\\#7\\}
-	\readarray\authorlistraw\AuthorList[-,7]
-}
-
-\newcommand{\advisordetail}[6]{
-	\stepcounter{advisorcount}
-	\appto\advisorlistraw{#1\\#2\\#3\\#4\\#5\\#6\\}
-	\readarray\advisorlistraw\AdvisorList[-,6]
 }
 
 % ## Make Pages ##
