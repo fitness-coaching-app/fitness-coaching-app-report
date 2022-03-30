@@ -536,7 +536,7 @@
 					\end{tabular}
 				\end{flushright}
 			}
-	}{}\fi
+	}{}
 	\clearpage
 \end{flushleft}
 }
@@ -566,7 +566,7 @@
 					\gappto\tabularcontent{\\}
 					\xappto\tabularcontent{\AdvisorList[\i,1]\AdvisorList[\i,2] & \AdvisorList[\i,3] & อาจารย์ที่ปรึกษาร่วม}
 				}
-			}{}\fi
+			}{}
 			\begin{tabular}{ @{}lllll@{} }
 				\tabularcontent \\
 				ปีการศึกษา \AcademicYearTH & \null & \null
@@ -605,7 +605,7 @@
 					\gappto\tabularcontent{\\}
 					\xappto\tabularcontent{\AdvisorList[\i,4]\AdvisorList[\i,5] & \AdvisorList[\i,6] & Co-Advisor}
 				}
-			}{}\fi
+			}{}
 
 			\begin{tabular}{ @{}lllll@{} }
 				\tabularcontent \\
