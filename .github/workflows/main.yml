@@ -25,7 +25,7 @@ jobs:
         uses: xu-cheng/texlive-action/full@v1
         with:
           run:
-            xelatex -file-line-error -interaction=nonstopmode fca-report.tex
+            xelatex -halt-on-error -interaction=nonstopmode fca-report.tex
       - name: Compile BibTex
         uses: xu-cheng/texlive-action/full@v1
         with:
@@ -35,8 +35,8 @@ jobs:
         uses: xu-cheng/texlive-action/full@v1
         with:
           run: |
-            xelatex -file-line-error -interaction=nonstopmode fca-report.tex
-            xelatex -file-line-error -interaction=nonstopmode fca-report.tex
+            xelatex -halt-on-error -interaction=nonstopmode fca-report.tex
+            xelatex -halt-on-error -interaction=nonstopmode fca-report.tex
       - name: Upload PDF to artifact
         uses: actions/upload-artifact@v2
         if: always()
