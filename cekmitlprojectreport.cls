@@ -32,8 +32,9 @@
 \RequirePackage[strict]{changepage}
 \RequirePackage{listings}
 \RequirePackage[hidelinks]{hyperref}
-
-\usepackage[normalem]{ulem}
+\RequirePackage[normalem]{ulem}
+\RequirePackage{readarray}
+\RequirePackage{tikz}
 
 \babelprovide[main, import]{thai}
 \graphicspath{ {./images/} }
@@ -420,6 +421,36 @@
 	\titlespacing*{\chapter}{0pt}{0pt}{20pt}
 }
 
+% ## Constants Setup ##
+\newcounter{authorcount}
+\setcounter{authorcount}{0}
+\newcounter{advisorcount}
+\setcounter{advisorcount}{0}
+
+\readarraysepchar{\\}
+\newcommand{\authorlistraw}{}
+\newcommand{\advisorlistraw}{}
+
+% #1 = TitleTH
+% #2 = FirstNameTH
+% #3 = LastNameTH
+% #4 = TitleEN
+% #5 = FirstNameEN
+% #6 = LastNameEN
+% #7 = StudentID
+
+\newcommand{\authordetail}[7]{
+	\stepcounter{authorcount}
+	\appto\authorlistraw{#1\\#2\\#3\\#4\\#5\\#6\\#7\\}
+	\readarray\authorlistraw\AuthorList[-,7]
+}
+
+\newcommand{\advisordetail}[6]{
+	\stepcounter{advisorcount}
+	\appto\advisorlistraw{#1\\#2\\#3\\#4\\#5\\#6\\}
+	\readarray\advisorlistraw\AdvisorList[-,6]
+}
+
 % ## Make Pages ##
 \newcommand{\MakeCoverPage}{
 	\newgeometry{top=1in, bottom=1in, left=1.2in, right=1in}
@@ -432,9 +463,11 @@
 		\MakeUppercase{\ThesisTitleEN}\\
 		\fontsize{18pt}{1em}\selectfont
 		\vspace{162pt}
-		\AuthorAFirstNameTH \space\space \AuthorALastNameTH\\
-		\AuthorBFirstNameTH \space\space  \AuthorBLastNameTH
-		\vspace{162pt}\\
+		\foreach \i in {1,...,\theauthorcount}
+			{
+				\AuthorList[\i,2] \space\space \AuthorList[\i,3]\\
+			}
+		\vspace{200pt}\\
 		ปริญญานิพนธ์นี้เป็นส่วนหนึ่งของการศึกษาตามหลักสูตรปริญญาวิศวกรรมศาสตรบัณฑิต\\
 		สาขาวิชาวิศวกรรมคอมพิวเตอร์ คณะวิศวกรรมศาสตร์\\
 		สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง\\
@@ -448,6 +481,7 @@
 
 \newcommand{\MakeThesisCert}{
 \begin{flushleft}
+	\renewcommand{\arraystretch}{1.0}
 	ปริญญานิพนธ์ปีการศึกษา \AcademicYearTH\\
 	สาขาวิชาวิศวกรรมคอมพิวเตอร์\\
 	คณะวิศวกรรมศาสตร์ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง\\
@@ -455,17 +489,42 @@
 	\phantom{เรื่อง}\hspace{1cm}\MakeUppercase{\ThesisTitleEN}
 	\vspace{20pt}\\
 	ผู้จัดทำ\\
-	\begin{tabular}{ @{}lllll@{} }
-	1. & \AuthorATitleTH\AuthorAFirstNameTH & \AuthorALastNameTH & รหัสนักศึกษา & \AuthorAStudentID \\
-	2. & \AuthorBTitleTH\AuthorBFirstNameTH & \AuthorBLastNameTH & รหัสนักศึกษา & \AuthorBStudentID
-	\end{tabular}
+	{
+		\renewcommand{\authorlistfortabular}{}
+		\foreach \i in {1,...,\theauthorcount}
+			{
+				\xappto\authorlistfortabular{\i. & \AuthorList[\i,1]\AuthorList[\i,2] & \AuthorList[\i,3] & รหัสนักศึกษา & \AuthorList[\i,7]}
+				\gappto\authorlistfortabular{\\}
+			}
+		\begin{tabular}{ @{}lllll@{} }
+			\authorlistfortabular
+		\end{tabular}
+	}
 	\vspace{100pt}\\
 	\begin{flushright}
-	\begin{tabular}{ @{} p{6cm} l @{} }
-		\DotFill & อาจารย์ที่ปรึกษา\\
-		\centering (\AdvisorTitleTH\space\AdvisorFirstNameTH \space\space \AdvisorLastNameTH) & \null
-	\end{tabular}
+		\begin{tabular}{ @{} p{7cm} l @{} }
+			\DotFill & อาจารย์ที่ปรึกษา\\
+			\centering (\AdvisorList[1,1]\AdvisorList[1,2]\space\space\AdvisorList[1,3]) & \null
+		\end{tabular}
 	\end{flushright}
+	\newline
+	\ifnumgreater{\theadvisorcount}{1}
+	{
+		\foreach \i in {2,...,\theadvisorcount}
+			{
+				\vspace*{60pt}
+				\newline
+				\renewcommand{\tabularcontent}{}
+				\xappto\tabularcontent{\centering (\AdvisorList[\i,1]\AdvisorList[\i,2]\space\space\AdvisorList[\i,3]) & \null}
+				\begin{flushright}
+					\begin{tabular}{ @{} p{7cm} l @{} }
+						\DotFill & อาจารย์ที่ปรึกษาร่วม\\
+						\tabularcontent
+					\end{tabular}
+				\end{flushright}
+				\newline
+			}
+	}{}\fi
 	\clearpage
 \end{flushleft}
 }
@@ -479,12 +538,28 @@
 		\textbf{\ThesisTitleTH}
 	\end{center}
 	\begin{flushright}
-		\begin{tabular}{ @{}lll@{} }
-				\AuthorATitleTH\AuthorAFirstNameTH & \AuthorALastNameTH & \AuthorAStudentID\\
-				\AuthorBTitleTH\AuthorBFirstNameTH & \AuthorBLastNameTH & \AuthorBStudentID\\
-				\AdvisorTitleTH\AdvisorFirstNameTH & \AdvisorLastNameTH & อาจารย์ที่ปรึกษา\\
+		\renewcommand{\arraystretch}{1.0}
+		{
+			\renewcommand{\tabularcontent}{}
+			\foreach \i in {1,...,\theauthorcount}
+				{
+					\xappto\tabularcontent{\AuthorList[\i,1]\AuthorList[\i,2] & \AuthorList[\i,3] & \AuthorList[\i,7]}
+					\gappto\tabularcontent{\\}
+				}
+			\xappto\tabularcontent{\AdvisorList[1,1]\AdvisorList[1,2] & \AdvisorList[1,3] & อาจารย์ที่ปรึกษา}
+			\ifnumgreater{\theadvisorcount}{1}
+			{
+				\foreach \i in {2,...,\theadvisorcount}
+				{
+					\gappto\tabularcontent{\\}
+					\xappto\tabularcontent{\AdvisorList[\i,1]\AdvisorList[\i,2] & \AdvisorList[\i,3] & อาจารย์ที่ปรึกษาร่วม}
+				}
+			}{}\fi
+			\begin{tabular}{ @{}lllll@{} }
+				\tabularcontent \\
 				ปีการศึกษา \AcademicYearTH & \null & \null
-		\end{tabular}
+			\end{tabular}
+		}
 	\end{flushright}
 	\vspace{20pt}
 	\textbf{\fontsize{18pt}{1em}\selectfont บทคัดย่อ}\\
@@ -502,12 +577,29 @@
 		\textbf{\MakeUppercase{\ThesisTitleEN}}
 	\end{center}
 	\begin{flushright}
-		\begin{tabular}{ @{}lll@{} }
-				\AuthorATitleEN\AuthorAFirstNameEN & \AuthorALastNameEN & \AuthorAStudentID\\
-				\AuthorBTitleEN\AuthorBFirstNameEN & \AuthorBLastNameEN & \AuthorBStudentID\\
-				\AdvisorTitleEN\AdvisorFirstNameEN & \AdvisorLastNameEN & Advisor\\
+		\renewcommand{\arraystretch}{1.0}
+		{
+			\renewcommand{\tabularcontent}{}
+			\foreach \i in {1,...,\theauthorcount}
+				{
+					\xappto\tabularcontent{\AuthorList[\i,4]\AuthorList[\i,5] & \AuthorList[\i,6] & \AuthorList[\i,7]}
+					\gappto\tabularcontent{\\}
+				}
+			\xappto\tabularcontent{\AdvisorList[1,4]\AdvisorList[1,5] & \AdvisorList[1,6] & Advisor}
+			\ifnumgreater{\theadvisorcount}{1}
+			{
+				\foreach \i in {2,...,\theadvisorcount}
+				{
+					\gappto\tabularcontent{\\}
+					\xappto\tabularcontent{\AdvisorList[\i,4]\AdvisorList[\i,5] & \AdvisorList[\i,6] & Co-Advisor}
+				}
+			}{}\fi
+
+			\begin{tabular}{ @{}lllll@{} }
+				\tabularcontent \\
 				Academic Year {\AcademicYearEN} & \null & \null
-		\end{tabular}
+			\end{tabular}
+		}
 	\end{flushright}
 	\vspace{20pt}
 	\textbf{\fontsize{18pt}{1em}\selectfont ABSTRACT}\\
@@ -530,10 +622,16 @@
 	#1
 	\vspace{40pt}\\
 	\begin{flushright}
-	\begin{tabular}{ @{}ll@{} }
-		\AuthorAFirstNameTH & \AuthorALastNameTH\\
-		\AuthorBFirstNameTH & \AuthorBLastNameTH
-	\end{tabular}
+		\renewcommand{\arraystretch}{1.0}
+		\renewcommand{\authorlistfortabular}{}
+		\foreach \i in {1,...,\theauthorcount}
+			{
+					\xappto\authorlistfortabular{\AuthorList[\i,2] & \AuthorList[\i,3]}
+					\gappto\authorlistfortabular{\\}
+			}
+		\begin{tabular}{ @{}ll@{} }
+			\authorlistfortabular
+		\end{tabular}
 	\end{flushright}
 	\clearpage
 }
