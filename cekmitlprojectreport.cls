@@ -40,6 +40,16 @@
 \graphicspath{ {./images/} }
 
 % ## Constants Setup ##
+\newcommand{\thesistitle}[2]{
+	\newcommand{\ThesisTitleTH}{#1}
+	\newcommand{\ThesisTitleEN}{#2}
+}
+\newcommand{\academicyear}[2]{
+	\newcommand{\AcademicYearTH}{#1}
+	\newcommand{\AcademicYearEN}{#2}
+}
+
+
 \newcounter{authorcount}
 \setcounter{authorcount}{0}
 \newcounter{advisorcount}
@@ -454,6 +464,9 @@
 }
 
 % ## Make Pages ##
+\newcommand{\tabularcontent}{}
+\newcommand{\authorlistfortabular}{}
+
 \newcommand{\MakeCoverPage}{
 	\newgeometry{top=1in, bottom=1in, left=1.2in, right=1in}
     \begin{center}
@@ -469,7 +482,7 @@
 			{
 				\AuthorList[\i,2] \space\space \AuthorList[\i,3]\\
 			}
-		\vspace{200pt}\\
+		\vspace{200pt}
 		ปริญญานิพนธ์นี้เป็นส่วนหนึ่งของการศึกษาตามหลักสูตรปริญญาวิศวกรรมศาสตรบัณฑิต\\
 		สาขาวิชาวิศวกรรมคอมพิวเตอร์ คณะวิศวกรรมศาสตร์\\
 		สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง\\
@@ -502,20 +515,18 @@
 			\authorlistfortabular
 		\end{tabular}
 	}
-	\vspace{100pt}\\
+	\vspace{100pt}
 	\begin{flushright}
 		\begin{tabular}{ @{} p{7cm} l @{} }
-			\DotFill & อาจารย์ที่ปรึกษา\\
+			\DotFill & อาจารย์ที่ปรึกษา\phantom{ร่วม}\\
 			\centering (\AdvisorList[1,1]\AdvisorList[1,2]\space\space\AdvisorList[1,3]) & \null
 		\end{tabular}
 	\end{flushright}
-	\newline
 	\ifnumgreater{\theadvisorcount}{1}
 	{
 		\foreach \i in {2,...,\theadvisorcount}
 			{
-				\vspace*{60pt}
-				\newline
+				\vspace{60pt}
 				\renewcommand{\tabularcontent}{}
 				\xappto\tabularcontent{\centering (\AdvisorList[\i,1]\AdvisorList[\i,2]\space\space\AdvisorList[\i,3]) & \null}
 				\begin{flushright}
@@ -524,7 +535,6 @@
 						\tabularcontent
 					\end{tabular}
 				\end{flushright}
-				\newline
 			}
 	}{}\fi
 	\clearpage
