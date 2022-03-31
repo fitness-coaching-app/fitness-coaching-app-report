@@ -473,16 +473,15 @@
     \textbf{
 		\pagenumbering{gobble}
 		\fontsize{22pt}{1.3em}\selectfont
-		\vspace{30pt}\\
         \ThesisTitleTH\\
 		\MakeUppercase{\ThesisTitleEN}\\
 		\fontsize{18pt}{1em}\selectfont
-		\vspace{162pt}
+		\vspace{\fill}
 		\foreach \i in {1,...,\theauthorcount}
 			{
 				\AuthorList[\i,2] \space\space \AuthorList[\i,3]\\
 			}
-		\vspace{200pt}
+		\vspace{\fill}
 		ปริญญานิพนธ์นี้เป็นส่วนหนึ่งของการศึกษาตามหลักสูตรปริญญาวิศวกรรมศาสตรบัณฑิต\\
 		สาขาวิชาวิศวกรรมคอมพิวเตอร์ คณะวิศวกรรมศาสตร์\\
 		สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง\\
@@ -518,7 +517,7 @@
 	\vspace{100pt}
 	\begin{flushright}
 		\begin{tabular}{ @{} p{7cm} l @{} }
-			\DotFill & อาจารย์ที่ปรึกษา\phantom{ร่วม}\\
+			\DotFill & อาจารย์ที่ปรึกษา\ifnumgreater{\theadvisorcount}{1}{\phantom{ร่วม}}{}\\
 			\centering (\AdvisorList[1,1]\AdvisorList[1,2]\space\space\AdvisorList[1,3]) & \null
 		\end{tabular}
 	\end{flushright}
