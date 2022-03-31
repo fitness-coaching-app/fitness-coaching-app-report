@@ -31,7 +31,7 @@
 \RequirePackage{etoolbox}
 \RequirePackage[strict]{changepage}
 \RequirePackage{listings}
-\RequirePackage[hidelinks]{hyperref}
+\RequirePackage[hidelinks,hypertexnames=false]{hyperref}
 \RequirePackage[normalem]{ulem}
 \RequirePackage{readarray}
 \RequirePackage{tikz}
