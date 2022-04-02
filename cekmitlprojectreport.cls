@@ -35,6 +35,7 @@
 \RequirePackage[normalem]{ulem}
 \RequirePackage{readarray}
 \RequirePackage{tikz}
+\RequirePackage[none]{hyphenat}
 
 \babelprovide[main, import]{thai}
 \graphicspath{ {./images/} }
