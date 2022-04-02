@@ -3,7 +3,7 @@
 \ProvidesClass{cekmitlprojectreport}
 
 \LoadClass[a4paper, oneside]{book}
-\RequirePackage[top=1in, bottom=1in, left=1.5in, right=1in]{geometry}
+\RequirePackage[top=1in, bottom=1in, left=1.5in, right=1in,reversemarginpar=true]{geometry}
 \RequirePackage{fontspec}
 \RequirePackage[fontsize=16pt]{fontsize}
 \RequirePackage{xunicode}
@@ -411,6 +411,7 @@
 	before=\vspace{-\baselineskip + \arraystretch\tabcolsep},
 	after=\vspace{-\baselineskip + \arraystretch\tabcolsep},
 }
+\setlist[itemize]{nosep,align=left, labelindent=\parindentvalue, leftmargin=*}
 
 % ## Code Block Style ##
 \renewcommand{\lstlistingname}{โปรแกรมที่}
