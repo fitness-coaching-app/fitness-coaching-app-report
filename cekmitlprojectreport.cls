@@ -35,9 +35,9 @@
 \RequirePackage[normalem]{ulem}
 \RequirePackage{readarray}
 \RequirePackage{tikz}
-\RequirePackage[none]{hyphenat}
+% \RequirePackage[none]{hyphenat}
 
-\babelprovide[main, import]{thai}
+\babelprovide[main, import, hyphenrules=nohyphenation]{thai}
 \graphicspath{ {./images/} }
 
 % ## Constants Setup ##
