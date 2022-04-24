@@ -154,7 +154,11 @@
 
 % ## Table of Contents Format ##
 \newcommand{\nocontentsline}[3]{}
-\newcommand{\tocless}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}
+\newcommand{\tocless}[1]{
+\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+#1
+\addtocontents{toc}{\protect\setcounter{tocdepth}{2}}
+}
 
 
 % อ้างอิงจาก http://kt-linux.blogspot.com/2011/01/latex.html
