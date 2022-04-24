@@ -35,7 +35,12 @@
 \RequirePackage[normalem]{ulem}
 \RequirePackage{readarray}
 \RequirePackage{tikz}
+\RequirePackage{url}
+% \RequirePackage[nottoc,numbib]{tocbibind}
 % \RequirePackage[none]{hyphenat}
+\urlstyle{same}
+
+
 
 \babelprovide[main, import, hyphenrules=nohyphenation]{thai}
 \graphicspath{ {./images/} }
