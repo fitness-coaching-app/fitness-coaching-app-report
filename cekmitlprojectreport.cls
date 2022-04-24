@@ -167,7 +167,7 @@
     \begin{center}
         {\fontsize{24pt}{1em}\selectfont\textbf{สารบัญ} }
     \end{center}
-	\vspace{20pt}
+	% \vspace{20pt}
     \begin{flushright}
         \textbf{หน้า}
     \end{flushright}
@@ -197,7 +197,8 @@
         \setcounter{tocitem}{0}
         \begin{center}
             {\fontsize{24pt}{1em}\selectfont\textbf{#3 (ต่อ)} }
-        \end{center}  \vskip2em
+        \end{center}
+        % \vspace{20pt}
         \begin{flushright}
             \textbf{หน้า}
         \end{flushright}
@@ -212,7 +213,7 @@
     \begin{center}
         {\fontsize{24pt}{1em}\selectfont\textbf{สารบัญตาราง} }
     \end{center}
-	\vspace{20pt}
+	% \vspace{20pt}
 	\begin{flushleft}
         \textbf{ตาราง}\hfill\textbf{หน้า}
     \end{flushleft}
@@ -237,7 +238,7 @@
         \begin{center}
             {\fontsize{24pt}{1em}\selectfont\textbf{#3 (ต่อ)} }
         \end{center}
-		\vspace{20pt}
+		% \vspace{20pt}
 		\begin{flushleft}
 			\textbf{ตาราง}\hfill\textbf{หน้า}
 		\end{flushleft}
@@ -251,7 +252,7 @@
     \begin{center}
         {\fontsize{24pt}{1em}\selectfont\textbf{สารบัญรูป} }
     \end{center}
-	\vspace{20pt}
+	% \vspace{20pt}
 	\begin{flushleft}
         \textbf{รูป}\hfill\textbf{หน้า}
     \end{flushleft}
@@ -275,7 +276,7 @@
         \begin{center}
             {\fontsize{24pt}{1em}\selectfont\textbf{#3 (ต่อ)} }
         \end{center}
-		\vspace{20pt}
+		% \vspace{20pt}
 		\begin{flushleft}
 			\textbf{รูป}\hfill\textbf{หน้า}
 		\end{flushleft}
@@ -295,23 +296,26 @@
 
 
 % ## TOC / LOF / LOT Format ##
+\contentsmargin{20pt}
+
 % tocitem format for chapter
-\titlecontents{chapter}[0mm]
+\titlecontents{chapter}[\parindentvalue]
 {\vspace{20pt}\stepcounter{tocitem}\tocheadcont{\thelinenumber}{\thetocitem}{สารบัญ}}
-{\makebox[\parindentvalue][l]{บทที่\hspace{1ex}\thecontentslabel}}
-{}{\DotFill\contentspage}
+{\hspace*{-\parindentvalue}\makebox[\parindentvalue][l]{บทที่\hspace{1ex}\thecontentslabel}}
+{\hspace*{-\parindentvalue}}
+{\DotFill\contentspage}
 
 % tocitem format for section
-\titlecontents{section}[0mm]
-{\leftskip=\parindentvalue\stepcounter{tocitem}\tocheadcont{\thelinenumber}{\thetocitem}{สารบัญ}}
-{\makebox[\parindentvalue][l]{\thecontentslabel}}
+\titlecontents{section}[2\parindentvalue]
+{\stepcounter{tocitem}\tocheadcont{\thelinenumber}{\thetocitem}{สารบัญ}}
+{\hspace*{-\parindentvalue}\makebox[\parindentvalue][l]{\thecontentslabel}}
 {}
 {\DotFill\contentspage}
 
 % tocitem format for subsection
-\titlecontents{subsection}[0mm]
-{\leftskip=2.54cm\stepcounter{tocitem}\tocheadcont{\thelinenumber}{\thetocitem}{สารบัญ}}
-{\makebox[\parindentvalue][l]{\thecontentslabel}}
+\titlecontents{subsection}[3\parindentvalue]
+{\stepcounter{tocitem}\tocheadcont{\thelinenumber}{\thetocitem}{สารบัญ}}
+{\hspace*{-\parindentvalue}\makebox[\parindentvalue][l]{\thecontentslabel}}
 {}
 {\DotFill\contentspage}
 
@@ -323,15 +327,15 @@
 
 % lotitem format for table
 
-\titlecontents{table}[0mm]
+\titlecontents{table}[10mm]
 {\stepcounter{lotitem}\lotheadcont{\thelinenumber}{\thelotitem}{สารบัญตาราง}}
-{\makebox[10mm][l]{\thecontentslabel}}
+{\hspace*{-10mm}\makebox[10mm][l]{\thecontentslabel}}
 {}{\DotFill\contentspage}
 
 % lotitem format for figure
-\titlecontents{figure}[0mm]
+\titlecontents{figure}[10mm]
 {\stepcounter{lofitem}\lofheadcont{\thelinenumber}{\thelofitem}{สารบัญรูป}}
-{\makebox[10mm][l]{\thecontentslabel}}
+{\hspace*{-10mm}\makebox[10mm][l]{\thecontentslabel}}
 {}{\DotFill\contentspage}
 
 
@@ -341,7 +345,6 @@
 \patchcmd{\@chapter}{\addtocontents{lof}{\protect\addvspace{10\p@}}}{}{}{}% LoF
 \patchcmd{\@chapter}{\addtocontents{lot}{\protect\addvspace{10\p@}}}{}{}{}% LoT
 \makeatother
-
 
 
 % ## Section Format ##
