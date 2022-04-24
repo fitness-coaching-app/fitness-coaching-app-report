@@ -1,14 +1,11 @@
 \section{การออกแบบส่วนโครงสร้างระบบฐานข้อมูล (Database Schema)}
 
-การออกแบบส่วนโครงสร้างระบบฐานข้อมูล (Database Schema) ดังนี้
+การออกแบบส่วนโครงสร้างระบบฐานข้อมูล (Database Schema) จะแสดงในรูปแบบ UML Class Diagram และมีรายละเอียดดังนี้
+\subsection{ฐานข้อมูลในคอลเล็กชัน users}
 \begin{figure}
-    \includegraphics[width=\textwidth]{chapter_3/database.png}
-    \caption{การออกแบบโครงสร้างฐานข้อมูล}
-    \label{fig:db-schema}
+    \includegraphics[width=\textwidth]{chapter_3/database/users}
+    \caption{แผนภาพยูสเคสในคอลเล็กชัน users}
 \end{figure}
-\clearpage
-การออกแบบฐานข้อมูลตามรูปที่ \ref{fig:db-schema} มีรายละเอียดดังต่อไปนี้
-
 \begin{table}
     \caption{รายละเอียดฐานข้อมูลในคอลเล็กชัน users}
     \begin{tabularx}{\textwidth}{ | l | l | X | }
@@ -97,6 +94,12 @@
     \end{tabularx}
 \end{table}
 
+\subsection{ฐานข้อมูลในคอลเล็กชัน courses}
+\begin{figure}
+    \includegraphics[width=8cm]{chapter_3/database/courses}
+    \caption{แผนภาพยูสเคสในคอลเล็กชัน courses}
+\end{figure}
+
 \begin{table}
     \caption{รายละเอียดฐานข้อมูลในคอลเล็กชัน courses}
     \begin{tabularx}{\textwidth}{ | l | l | X | }
@@ -137,6 +140,13 @@
     \end{tabularx}
 \end{table}
 
+\subsection{ฐานข้อมูลในคอลเล็กชัน achievements}
+\begin{figure}
+    \includegraphics[width=5cm]{chapter_3/database/achievements}
+    \caption{แผนภาพยูสเคสในคอลเล็กชัน achievements}
+\end{figure}
+
+
 \begin{table}
     \caption{รายละเอียดฐานข้อมูลในคอลเล็กชัน achievements}
     \begin{tabularx}{\textwidth}{ | l | l | X | }
@@ -149,6 +159,12 @@
         criteria & string & เกณฑ์ต่าง ๆ ของเหรียญรางวัลเสมือน\\\hline
     \end{tabularx}
 \end{table}
+
+\subsection{ฐานข้อมูลในคอลเล็กชัน activities}
+\begin{figure}
+    \includegraphics[width=\textwidth]{chapter_3/database/activities}
+    \caption{แผนภาพยูสเคสในคอลเล็กชัน activities}
+\end{figure}
 
 \begin{table}
     \caption{รายละเอียดฐานข้อมูลในคอลเล็กชัน activities}
@@ -224,6 +240,12 @@
     \end{tabularx}
 \end{table}
 
+\subsection{ฐานข้อมูลในคอลเล็กชัน news}
+\begin{figure}
+    \includegraphics[width=5cm]{chapter_3/database/news}
+    \caption{แผนภาพยูสเคสในคอลเล็กชัน news}
+\end{figure}
+
 \begin{table}
     \caption{รายละเอียดฐานข้อมูลในคอลเล็กชัน news}
     \begin{tabularx}{\textwidth}{ | l | l | X | }
@@ -247,6 +269,11 @@
     \end{tabularx}
 \end{table}
 
+\subsection{ฐานข้อมูลในคอลเล็กชัน sections}
+\begin{figure}
+    \includegraphics[width=9cm]{chapter_3/database/sections}
+    \caption{แผนภาพยูสเคสในคอลเล็กชัน sections}
+\end{figure}
 \begin{table}
     \caption{รายละเอียดฐานข้อมูลในคอลเล็กชัน sections}
     \noindent ใช้ในการเก็บข้อมูลส่วนต่าง ๆ ในหน้าหลัก (Home) ที่จะมีการแนะนำคอร์สต่าง ๆ
@@ -291,6 +318,11 @@
         COURSE & ส่วนเป็นแบบ Course\\\hline
     \end{tabularx}
 \end{table}
+\subsection{ฐานข้อมูลในคอลเล็กชัน userFollowings}
+\begin{figure}
+    \includegraphics[width=5cm]{chapter_3/database/userFollowings}
+    \caption{แผนภาพยูสเคสในคอลเล็กชัน userFollowings}
+\end{figure}
 
 \begin{table}
     \caption{รายละเอียดฐานข้อมูลในคอลเล็กชัน userFollowings}
