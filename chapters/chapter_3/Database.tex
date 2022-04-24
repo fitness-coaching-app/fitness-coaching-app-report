@@ -1,5 +1,5 @@
 \section{การออกแบบส่วนโครงสร้างระบบฐานข้อมูล (Database Schema)}
-% TODO: Change the schema
+
 การออกแบบส่วนโครงสร้างระบบฐานข้อมูล (Database Schema) ดังนี้
 \begin{figure}
     \includegraphics[width=\textwidth]{chapter_3/database.png}
@@ -14,7 +14,7 @@
     \begin{tabularx}{\textwidth}{ | l | l | X | }
         \hline
         \bf ชื่อแอตทริบิวต์ & \bf ชนิดตัวแปร & \bf รายละเอียด \\\hline
-        \_ id & objectId & ID ของ document ใน collection users\\\hline
+        \_ id & objectId & ID ของ document ในคอลเล็กชัน users\\\hline
         status & StatusType & สถานะของบัญชีผู้ใช้\\\hline
         email & string & อีเมลของผู้ใช้\\\hline
         password & string & รหัสผ่านของผู้ใช้\\\hline
@@ -23,11 +23,11 @@
         weightHistory & WeightData[] & ประวัติน้ำหนักของผู้ใช้\\\hline
         heightHistory & HeightData[] & ประวัติส่วนสูงของผู้ใช้\\\hline
         xp & int & คะแนนของผู้ใช้\\\hline
-        level & int & ขั้น (Level) ของผู้ใช้\\\hline
         profilePicture & string & URL รูปภาพโปรไฟล์ของผู้ใช้\\\hline
         gender & GenderType & เพศของผู้ใช้\\\hline
         exercisePreference & string[] & รายการประเภทการออกกำลังกายที่ชอบ\\\hline
         partToAvoid & string[] & รายการสัดส่วนของผู้ใช้ที่ต้องการหลีกเลี่ยง\\\hline
+        userPreference & UserPreference & ข้อมูลการตั้งค่าของผู้ใช้\\\hline
     \end{tabularx}
 \end{table}
 
@@ -98,16 +98,17 @@
 \end{table}
 
 \begin{table}
-    \caption{รายละเอียดฐานข้อมูลใน collection courses}
+    \caption{รายละเอียดฐานข้อมูลในคอลเล็กชัน courses}
     \begin{tabularx}{\textwidth}{ | l | l | X | }
         \hline
         \bf ชื่อแอตทริบิวต์ & \bf ชนิดตัวแปร & \bf รายละเอียด \\\hline
-        \_id & objectId & ID ของ document ใน collection courses\\\hline
+        \_id & objectId & ID ของ document ในคอลเล็กชัน courses\\\hline
         name & string & ชื่อคอร์ส\\\hline
         description & string & คำอธิบายของคอร์ส\\\hline
         category & string & หมวดหมู่คอร์ส\\\hline
         bodyParts & string[] & ส่วนของร่างกายที่ต้องใช้\\\hline
         viewCount & int & จำนวนการเข้าดูคอร์สนี้\\\hline
+        overallRating & double & คะแนนเฉลี่ยของคอร์สนี้\\\hline
         rating & Rating[] & รายการของผู้ใช้ที่ให้คะแนนกับคอร์สนี้\\\hline
         difficulty & Difficulty & ความยาก-ง่ายของคอร์ส\\\hline
         coverPicture & string & URL รูปภาพหน้าปกคอร์ส\\\hline
@@ -145,7 +146,7 @@
         title & string & ชื่อของเหรียญรางวัลเสมือน\\\hline
         description & string & คำอธิบายเหรียญรางวัลเสมือน\\\hline
         picture & string & รูปภาพของเหรียญรางวัลเสมือน\\\hline
-        criteria & string[] & รายการเกณฑ์ต่าง ๆ ของเหรียญรางวัลเสมือน\\\hline
+        criteria & string & เกณฑ์ต่าง ๆ ของเหรียญรางวัลเสมือน\\\hline
     \end{tabularx}
 \end{table}
 
