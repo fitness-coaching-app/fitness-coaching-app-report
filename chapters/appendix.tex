@@ -87,7 +87,84 @@
 \begin{enumerate}
     \item เปิดเว็บไซต์ https://github.com/ และไปยังหน้า Repository ของระบบ Backend
     \begin{figure}
-        \includegraphics[width=15cm]{./appendix/a-8.png}
-        \caption{หน้า Repository ของโครงงานในเว็บไซต์ GitHub}
+        \includegraphics[width=15cm]{./appendix/a-16.png}
+        \caption{หน้า Repository ของระบบ Backend ในเว็บไซต์ GitHub}
+    \end{figure}
+    \item ที่แถบเมนูด้านบน ให้คลิกที่เมนู Actions จะแสดงหน้าต่าง Actions จากนั้นคลิกที่ New Workflow บริเวณด้านซ้ายของเว็บไซต์
+    \begin{figure}
+        \includegraphics[width=15cm]{./appendix/a-17.png}
+        \caption{หน้าต่าง Actions}
+    \end{figure}
+    \item จากนั้นจะมีหน้าต่าง Choose a workflow ให้คลิกที่ set up a workflow yourself เพื่อกำหนดค่า Workflow ด้วยตนเอง
+    \begin{figure}
+        \includegraphics[width=15cm]{./appendix/a-18.png}
+        \caption{หน้าต่าง Actions}
+    \end{figure}
+    \item จากนั้นจะมีหน้าต่าง Editor สำหรับกำหนดค่า Workflow โดยกำหนดค่าดังนี้
+    \begin{lstlisting}[caption=คำสั่ง Workflow]
+name: Dev - Deploy to Cloud Functions
+
+on:
+  push:
+    branches: [ develop ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'npm'
+      - name: Install Node.js dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Copy package.json to build folder & change target
+        run: jq '.main = "index.js"' package.json > build/package.json
+      - name: Copy openAPI docs to build folder
+        run: |
+          cp -R ./docs ./build
+      - name: Create .env in build/src
+        run: |
+          cd ./build
+          touch .env
+          echo "${{ secrets.DEV_DOTENV }}" >> .env
+      - name: Create google-cloud.json in build
+        run: |
+          cd ./build/src
+          mkdir google-cloud
+          cd google-cloud
+          touch fitness-coaching-app-5942f56e3512.json
+          echo '${{ secrets.GCS_CREDENTIALS }}' >> fitness-coaching-app-5942f56e3512.json
+      - name: ls -R for debugging
+        run: |
+          cd ./build
+          ls -R
+      - name: Cloud Functions Deploy
+        uses: google-github-actions/deploy-cloud-functions@v0.1.2
+        id: deploy
+        with:
+          name: dev-api
+          # Project to deploy the function in.
+          project_id: ${{ secrets.RUN_PROJECT }}
+          # The email address of the IAM service account associated with the function at runtime.
+          service_account_email: ${{ secrets.SA_EMAIL }}
+          credentials: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+          # Region to deploy the function in. Defaults to us-central1, if not specified.
+          region: asia-southeast1
+          # Path to function deployment directory within the source repo.
+          source_dir: ./build
+          # Name of a function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified.
+          entry_point: api
+          # Runtime to use for the function.
+          runtime: nodejs14
+    \end{lstlisting}
+    \item เมื่อกำหนดค่า Workflow ดังกล่าวเรียบร้อยแล้วให้คลิกที่ปุ่ม Start commit และคลิกที่ปุ่ม Commit new file จากนั้นเมื่อได้ Push ระบบ API และ Database ไปยัง GitHub Repository เรียบร้อยแล้ว GitHub Actions จะทำการเรียก Workflow ที่ได้กำหนดค่าไว้ให้ Deploy ระบบไปยัง Google Cloud Functions โดยอัตโนมัติ
+    \begin{figure}
+        \includegraphics[width=15cm]{./appendix/a-19.png}
+        \caption{หน้า Repository ของระบบ Backend ในเว็บไซต์ GitHub}
     \end{figure}
 \end{enumerate}
