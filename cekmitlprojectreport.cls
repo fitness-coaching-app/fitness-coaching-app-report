@@ -300,7 +300,7 @@
 
 
 % ## TOC / LOF / LOT Format ##
-\contentsmargin{20pt}
+\contentsmargin[10pt]{20pt}
 
 % tocitem format for chapter
 \titlecontents{chapter}[\parindentvalue]
