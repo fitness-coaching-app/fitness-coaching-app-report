@@ -153,6 +153,10 @@
 }
 
 % ## Table of Contents Format ##
+\newcommand{\nocontentsline}[3]{}
+\newcommand{\tocless}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}
+
+
 % อ้างอิงจาก http://kt-linux.blogspot.com/2011/01/latex.html
 % ตั้งค่าความลึกของหน้าสารบัญใหม่เป็น 1 (คือลงลึกแค่ชั้นเดียว) และตั้งค่าคำสั่ง \tableofcontents ใหม่
 \setcounter{tocdepth}{2}
