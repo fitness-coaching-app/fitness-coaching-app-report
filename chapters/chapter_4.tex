@@ -205,68 +205,66 @@
 \begin{table}
 	\centering
 	\caption{รายละเอียดความแม่นยำในการตรวจจับของ ML Kit ของท่าทาง Seal Jacks ในส่วนของ Landmarks rightElbow, rightHip, rightShoulder, rightKnee, และ rightIndex}
-	\begin{tabularx}{\linewidth}{| >{\centering}X| >{\centering}X|X|X|X|X|X|}
-		\hline
-		\multirow{2}{*}{ท่าทาง} & \multirow{2}{*}{\shortstack{จำนวน                                                                       \\ครั้ง}} & \multicolumn{5}{c|}{\% likelihood (Average)}  
-\cline{3-7}
-                        &                             & rightElbow & rightHip & rightShoulder & rightKnee & rightIndex  \\ 
-\hline
-Seal Jacks              & 10                          & 97.46\%    & 98.78\%  & 98.74\%       & 96.22\%   & 92.84\%     \\ 
-\hline
-Seal Jacks ~(ต้นฉบับ)    & 10                          & 90.87\%    & 90.85\%  & 94.65\%       & 90.50\%   & 88.35\%     \\
-\hline
+	\begin{tabularx}{\linewidth}{| >{\centering}X| >{\centering}X|X|X|X|X|X|} 
+	\hline
+	\multirow{2}{*}{ท่าทาง} & \multirow{2}{*}{จำนวนครั้ง} & \multicolumn{5}{c|}{\% likelihood (Average)}                    \\ 
+	\cline{3-7}
+							&                             & rightElbow & rightHip & right Shoulder & rightKnee & rightIndex  \\ 
+	\hline
+	Seal Jacks              & 10                          & 97.46\%    & 98.78\%  & 98.74\%       & 96.22\%   & 92.84\%     \\ 
+	\hline
+	Seal Jacks (ต้นฉบับ)    & 10                          & 90.87\%    & 90.85\%  & 94.65\%       & 90.50\%   & 88.35\%     \\
+	\hline
 	\end{tabularx}
-\end{table}
-
-\begin{table}
-	\centering
-	\caption{รายละเอียดความแม่นยำในการตรวจจับของ ML Kit ของท่าทาง Seal Jacks ในส่วนของ Landmarks leftElbow, leftHip, leftSholder, leftKnee, และ leftIndex}
-	\begin{tabularx}{\linewidth}{| >{\centering}X| >{\centering}X|X|X|X|X|X|}
+	\end{table}
+	\begin{table}
+		\centering
+		\caption{รายละเอียดความแม่นยำในการตรวจจับของ ML Kit ของท่าทาง Seal Jacks ในส่วนของ Landmarks leftElbow, leftHip, leftSholder, leftKnee, และ leftIndex}
+		\begin{tabular}{|c|c|l|l|l|l|l|} 
 		\hline
-		\multirow{2}{*}{ท่าทาง} & \multirow{2}{*}{\shortstack{จำนวน                                                                       \\ครั้ง}} & \multicolumn{5}{c|}{\% likelihood (Average)}  
-\cline{3-7}
-                        &                             & leftElbow & leftHip & leftShoulder & leftKnee & leftIndex  \\ 
-\hline
-Seal Jacks              & 10                          & 94.69\%   & 98.25\% & 97.81\%      & 94.88\%  & 89.27\%    \\ 
-\hline
-Seal Jacks ~(ต้นฉบับ)    & 10                          & 90.48\%   & 90.84\% & 92.88\%      & 90.29\%  & 87.36\%    \\
-\hline
-	\end{tabularx}
-\end{table}
+		\multirow{2}{*}{ท่าทาง} & \multirow{2}{*}{จำนวนครั้ง} & \multicolumn{5}{c|}{\% likelihood (Average)}               \\ 
+		\cline{3-7}
+								&                             & leftElbow & leftHip & leftShoulder & leftKnee & leftIndex  \\ 
+		\hline
+		Seal Jacks              & 10                          & 94.69\%   & 98.25\% & 97.81\%      & 94.88\%  & 89.27\%    \\ 
+		\hline
+		Seal Jacks (ต้นฉบับ)    & 10                          & 90.48\%   & 90.84\% & 92.88\%      & 90.29\%  & 87.36\%    \\
+		\hline
+		\end{tabular}
+		\end{table}	
 
 \subsubsection{ท่าทางยกแขนขึ้นด้านข้าง (Side Arm Raises)}
 การนับจำนวนครั้งที่ได้จากการตรวจจับของ ML Kit ในท่าทางยกแขนขึ้นด้านข้างนั้นสามารถนับได้ 10 ครั้ง ทั้งจากการยืนหน้ากล้องและใช้วิดีโอสาธิตการออกกำลังกายต้นฉบับ โดย \% likelihood เฉลี่ยของ Landmark ของการออกท่าทางทั้งสองรูปแบบเป็นดังนี้
 \begin{table}
 	\centering
-	\caption{รายละเอียดความแม่นยำในการตรวจจับของ ML Kit ของท่าทาง ยกแขนขึ้นด้านข้าง (Side Arm Raises) ในส่วนของ Landmarks rightElbow, rightHip, rightShoulder, และ rightWrist}
-	\begin{tabularx}{\linewidth}{| >{\centering}X| >{\centering}X|X|X|X|X|}
-		\hline
-		\multirow{2}{*}{ท่าทาง} & \multirow{2}{*}{\shortstack{จำนวน                                                                       \\ครั้ง}} & \multicolumn{4}{c|}{\% likelihood (Average)}  
-\cline{3-6}
-                          &                             & rightElbow & rightHip & rightShoulder & rightWrist  \\ 
-\hline
-Side Arm Raises           & 10                          & 97.45\%    & 96.24\%  & 99.37\%       & 92.41\%     \\ 
-\hline
-Side Arm Raises ~(ต้นฉบับ) & 10                          & 99.04\%    & 99.72\%  & 98.83\%       & 90.79\%     \\
-\hline
+	\caption{รายละเอียดความแม่นยำในการตรวจจับของ ML Kit ของท่าทางยกแขนขึ้นด้านข้าง (Side Arm Raises) ในส่วนของ Landmarks rightElbow, rightHip, rightSholder, และ rightWrist}
+	\begin{tabularx}{\linewidth}{| >{\centering}X| >{\centering}X|X|X|X|X|} 
+	\hline
+	\multirow{2}{*}{ท่าทาง}   & \multirow{2}{*}{จำนวนครั้ง} & \multicolumn{4}{c|}{\% likelihood (Average)}        \\ 
+	\cline{3-6}
+							  &                             & rightElbow & rightHip & rightShoulder & rightWrist  \\ 
+	\hline
+	Side Arm Raises           & 10                          & 97.45\%    & 96.24\%  & 99.37\%       & 92.41\%     \\ 
+	\hline
+	Side Arm Raises (ต้นฉบับ) & 10                          & 99.04\%    & 99.72\%  & 98.83\%       & 90.79\%     \\
+	\hline
 	\end{tabularx}
-\end{table}
-
+	\end{table}
 \begin{table}
 	\centering
-	\caption{รายละเอียดความแม่นยำในการตรวจจับของ ML Kit ของท่าทาง ยกแขนขึ้นด้านข้าง (Side Arm Raises) ในส่วนของ Landmarks leftElbow, leftHip, leftShoulder, และ leftWrist
-	\begin{tabularx}{\linewidth}{| >{\centering}X| >{\centering}X|X|X|X|X|}
-		\hline
-		\multirow{2}{*}{ท่าทาง} & \multirow{2}{*}{\shortstack{จำนวน                                                                       \\ครั้ง}} & \multicolumn{4}{c|}{\% likelihood (Average)}  
-\cline{3-6}
-                          &                             & leftElbow & leftHip & leftShoulder & leftWrist  \\ 
-\hline
-Side Arm Raises           & 10                          & 98.12\%   & 96.74\% & 99.37\%      & 93.23\%    \\ 
-\hline
-Side Arm Raises (ต้นฉบับ) & 10                          & 95.40\%   & 99.28\% & 96.13\%      & 79.13\%    \\
-\hline
+	\caption{รายละเอียดความแม่นยำในการตรวจจับของ ML Kit ของท่าทางยกแขนขึ้นด้านข้าง (Side Arm Raises) ในส่วนของ Landmarks leftElbow, leftHip, leftSholder, และ leftWrist}
+	\begin{tabularx}{\linewidth}{| >{\centering}X| >{\centering}X|X|X|X|X|} 
+	\hline
+	\multirow{2}{*}{ท่าทาง}   & \multirow{2}{*}{จำนวนครั้ง} & \multicolumn{4}{c|}{\% likelihood (Average)}    \\ 
+	\cline{3-6}
+							  &                             & leftElbow & leftHip & leftShoulder & leftWrist  \\ 
+	\hline
+	Side Arm Raises           & 10                          & 98.12\%   & 96.74\% & 99.37\%      & 93.23\%    \\ 
+	\hline
+	Side Arm Raises (ต้นฉบับ) & 10                          & 95.40\%   & 99.28\% & 96.13\%      & 79.13\%    \\
+	\hline
 	\end{tabularx}
-\end{table}
+	\end{table}
 
 \section{การทดสอบส่วนการติดต่อผู้ใช้ (User Interface)}
 \tocless{\subsection{วัตถุประสงค์}}
