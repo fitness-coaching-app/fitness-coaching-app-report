@@ -119,6 +119,142 @@
     \end{tabularx}
 \end{table}
 
+จากองค์ประกอบของโครงสร้างไฟล์ข้อมูลท่าทางที่กล่าวมาข้างต้นทั้งหมด สามารถนำมาเขียนเป็นไฟล์ข้อมูลท่าทางในภาษา YAML ได้ดังตัวอย่างของท่าทางกระโดดตบ ซึ่งจะเป็นการนับจำนวนท่าทาง และท่าทาง Tree Pose ซึ่งจะเป็นการจับเวลาท่าทาง ดังต่อไปนี้
+\begin{lstlisting}[caption=ตัวอย่างไฟล์ข้อมูลท่าทางของท่าทางกระโดดตบ (Jumping Jacks)]
+id: courseId
+name: Jumping Jacks
+steps:
+    - name: Jumping Jacks
+    mediaDir: "https://storage.googleapis.com/fca-bucket/courses/jumping-jacks/jumping%20jacks.mp4"
+    bounce: true
+    criteria:
+        counter:
+        repeat: 5
+        countOnId: cnt
+    posturePosition: stand
+    cameraAngle: front
+    facing: up
+    calculators:
+        - name: right arm
+        angle:
+            landmarks: [ rightElbow, rightHip ]
+            vertex: rightShoulder
+        - name: left arm
+        angle:
+            landmarks: [ leftElbow, leftHip ]
+            vertex: leftShoulder
+        - name: clap
+        touch:
+            landmarks: [leftIndex, rightIndex]
+    poses:
+        - definitions:
+            - calculator: right arm
+            with:
+                range: [ 0, 30 ]
+            - calculator: left arm
+            with:
+                range: [ 0, 30 ]
+            - calculator: clap
+            with:
+                touch: false
+        - id: cnt
+        definitions:
+            - calculator: right arm
+            with:
+                range: [ 100, 180 ]
+            - calculator: left arm
+            with:
+                range: [ 100, 180 ]
+            - calculator: clap
+            with:
+                touch: true    
+\end{lstlisting}
+\begin{lstlisting}[caption=ตัวอย่างไฟล์ข้อมูลท่าทางของท่าทาง Tree Pose]
+id: courseId
+name: Tree Pose
+steps:
+  - name: Tree Pose Right Leg
+    mediaDir: ""
+    bounce: true
+    criteria:
+      timer:
+        duration: 10
+    posturePosition: stand
+    cameraAngle: front
+    facing: up
+    calculators:
+      - name: right arm
+        angle:
+          landmarks: [rightElbow, rightHip]
+          vertex: rightShoulder
+      - name: left arm
+        angle:
+          landmarks: [leftElbow, leftHip]
+          vertex: leftShoulder
+      - name: right leg
+        angle:
+          landmarks: [rightHip, rightAnkle]
+          vertex: rightKnee
+      - name: foot touch knee
+        touch:
+          landmarks: [rightFootIndex, leftKnee]
+
+    poses:
+      - definitions:
+        - calculator: right arm
+          with:
+            range: [140,180]
+        - calculator: left arm
+          with:
+            range: [140,180]
+        - calculator: right leg
+          with:
+            range: [0,70]
+        - calculator: foot touch knee
+          with:
+            touch: true
+  - name: Tree Pose Left Leg
+    mediaDir: ""
+    bounce: true
+    criteria:
+      timer:
+        duration: 10
+    posturePosition: stand
+    cameraAngle: front
+    facing: up
+    calculators:
+      - name: right arm
+        angle:
+          landmarks: [rightElbow, rightHip]
+          vertex: rightShoulder
+      - name: left arm
+        angle:
+          landmarks: [leftElbow, leftHip]
+          vertex: leftShoulder
+      - name: left leg
+        angle:
+          landmarks: [leftHip, leftAnkle]
+          vertex: leftKnee
+      - name: foot touch knee
+        touch:
+          landmarks: [leftFootIndex, rightKnee]
+
+    poses:
+      - definitions:
+        - calculator: right arm
+          with:
+            range: [140,180]
+        - calculator: left arm
+          with:
+            range: [140,180]
+        - calculator: left leg
+          with:
+            range: [0,70]
+        - calculator: foot touch knee
+          with:
+            touch: true
+\end{lstlisting}
+
 
 \subsection{ส่วนการแนะนำท่าทางให้แก่ผู้ใช้}
 เมื่อส่วนอัลกอริทึมการตรวจสอบท่าทางของผู้ใช้ ได้ประมวลผลท่าทางเรียบร้อยแล้ว ระบบจะส่งผลการตรวจสอบมายังส่วนการแนะนำท่าทางผู้ใช้ โดยจะทำการแปลงข้อมูลการตรวจสอบที่ได้ เป็นประโยคแนะนำท่าทางภาษาอังกฤษ เพื่อให้ผู้ใช้สามารถเข้าใจได้ง่าย และจะส่งผลลัพธ์การแนะนำท่าทางไปยังส่วนประสานงานผู้ใช้ เพื่อแสดงผลต่อไป
